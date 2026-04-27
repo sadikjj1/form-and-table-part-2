@@ -140,6 +140,8 @@ $(document).ready(function () {
     
     $tableBody.on("click", ".delete-btn", function () {
 
+         if (!confirm("Are you sure to delete?")) return;
+
     let index = $(this).data("index");
     let data = JSON.parse(localStorage.getItem("formData")) || [];
 
@@ -159,7 +161,7 @@ $(document).ready(function () {
 
     loadData();
 
-    if (!confirm("Are you sure to delete?")) return;
+   
 });
 
 
