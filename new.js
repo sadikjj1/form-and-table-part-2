@@ -4,6 +4,7 @@ $(document).ready(function () {
     const $tableBody = $("#formTable tbody");
     const $searchInput = $("#searchInput");
     const $searchColumn = $("#searchColumn");
+    const $resetBtn = $("#resetBtn");
     const $searchBtn = $("#searchBtn");
     const $rowsPerPage = $("#rowsPerPage");
     const $paginationContainer = $("#pagination");
@@ -14,6 +15,16 @@ $(document).ready(function () {
     currentPage = 1; // reset page
     loadData();
     });
+
+    $resetBtn.on("click", function () {
+        $searchInput.val("");
+        $searchColumn.val("all");
+
+        currentPage = 1;
+        loadData(); // full data show করবে
+    });
+
+
 
     $("input, select").on("input change", function () {
         $(this).removeClass("border-red-500");
@@ -109,6 +120,17 @@ $(document).ready(function () {
         $form[0].reset();
         loadData();
     });
+
+
+
+
+
+
+
+
+
+
+
 
     // ================= RENDER TABLE
     function renderTable(data) {
