@@ -136,15 +136,33 @@ $(document).ready(function () {
     }
 
     // ================= DELETE
+
+    
     $tableBody.on("click", ".delete-btn", function () {
-        let index = $(this).data("index");
-        let data = JSON.parse(localStorage.getItem("formData")) || [];
 
-        data.splice(index, 1);
-        localStorage.setItem("formData", JSON.stringify(data));
+    let index = $(this).data("index");
+    let data = JSON.parse(localStorage.getItem("formData")) || [];
 
-        loadData();
-    });
+    // 🔥 যদি edit mode এ থাকে এবং একই item delete হয়
+    if (editIndex === index) {
+        $form[0].reset();
+        editIndex = null;
+    }
+
+    // 🔥 যদি delete করা index editIndex এর আগে হয় → index shift fix
+    if (editIndex !== null && index < editIndex) {
+        editIndex--;
+    }
+
+    data.splice(index, 1);
+    localStorage.setItem("formData", JSON.stringify(data));
+
+    loadData();
+
+    if (!confirm("Are you sure to delete?")) return;
+});
+
+
 
     // ================= EDIT
     $tableBody.on("click", ".edit-btn", function () {
