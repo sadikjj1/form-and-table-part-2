@@ -211,23 +211,50 @@ $(document).ready(function () {
 
     // ================= PAGINATION
     function renderPagination(total) {
-        $paginationContainer.empty();
+    $paginationContainer.empty();
 
-        let totalPages = Math.ceil(total / rowsPerPage);
+    let totalPages = Math.ceil(total / rowsPerPage);
 
-        for (let i = 1; i <= totalPages; i++) {
+    // ===== PREVIOUS BUTTON
+    let prevBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 mr-2">Prev</button>`);
 
-            let btn = $(`<button class="px-1 py-1 border rounded ${i === currentPage ? 'bg-blue-600 text-black' : 'bg-white text-black'}">${i}</button>`);
+    prevBtn.prop("disabled", currentPage === 1);
 
-            btn.on("click", function () {
-                currentPage = i;
-                loadData();
-            });
-
-            $paginationContainer.append(btn);
+    prevBtn.on("click", function () {
+        if (currentPage > 1) {
+            currentPage--;
+            loadData();
         }
+    });
+
+    $paginationContainer.append(prevBtn);
+
+    // ===== PAGE NUMBERS
+    for (let i = 1; i <= totalPages; i++) {
+        let btn = $(`<button class="px-3 py-1 border rounded mx-1 ${i === currentPage ? 'bg-blue-500 text-white' : ''}">${i}</button>`);
+
+        btn.on("click", function () {
+            currentPage = i;
+            loadData();
+        });
+
+        $paginationContainer.append(btn);
     }
 
+    // ===== NEXT BUTTON
+    let nextBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 ml-2">Next</button>`);
+
+    nextBtn.prop("disabled", currentPage === totalPages);
+
+    nextBtn.on("click", function () {
+        if (currentPage < totalPages) {
+            currentPage++;
+            loadData();
+        }
+    });
+
+    $paginationContainer.append(nextBtn);
+}
     // ================= HIGHLIGHT
     function highlight(text) {
         let term = $searchInput.val();
