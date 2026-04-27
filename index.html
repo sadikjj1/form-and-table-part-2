@@ -23,7 +23,7 @@
 
 
 </head>
-<body class="bg-blue-300 text-black dark:bg-gray-900 dark:text-white h-screen">
+<body class="bg-blue-300 text-black dark:bg-gray-900 dark:text-white">
     <!-- <button id="themeToggle">Mode change</button> -->
     <div >
     <button id="themeToggle" class="bg-black text-white font-bold py-2 px-4 rounded-xl m-2 ">
@@ -36,7 +36,6 @@
     Assign yourself to a sub-department    
     </h1>
     <div class="box-content md:box-border bg-red-300 w-[80%] h-auto mx-auto rounded-[10px] shadow-md p-10">
-        <hr/>
     <form id="mainForm" class=" bg-pink-200  dark:bg-gray-800 text-black dark:text-white p-8 m-10 rounded-[10px] shadow-md hover:text-shadow-lime-300 " >
     <br/>
         <h5 >আপনার নাম (*):</h5>
@@ -229,10 +228,13 @@
     
     
 
-    <div class="w-[90%] mx-auto my-6 flex justify-end gap-3">
-    
-    <select id="searchColumn" class="appearance-none bg-white border border-blue-200 text-slate-700 py-2.5 px-4 pr-10 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent focus:outline-none transition-all cursor-pointer font-medium">
-      <option value="all" >All Columns</option>
+<div class="w-[75%] mx-auto mt-6  flex justify-end gap-3 mb-4 ">
+
+  <!-- SEARCH BAR -->
+
+    <select id="searchColumn"
+      class="bg-white dark:bg-gray-700 text-black dark:text-white border px-3 py-2 rounded-lg">
+      <option value="all">All Columns</option>
       <option value="name">Name</option>
       <option value="department">Department</option>
       <option value="facebook">Facebook</option>
@@ -266,10 +268,14 @@
         
 
       <!-- Search button -->
-      <button id="searchBtn" class="py-2 px-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Search</button>
+     <button id="searchBtn"
+      class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+      Search
+    </button> 
+ 
     </div>
 
-    <div class="w-full max-w-6xl mx-auto mt-6 bg-white rounded-xl shadow-md overflow-hidden">
+    <div class="w-full max-w-6xl mx-auto mt-4 bg-white rounded-xl shadow-md overflow-hidden">
 
   <div class="overflow-x-auto">
     <table id="formTable" class=" w-full text-sm text-left border-collapse bg-white dark:bg-gray-700 text-black dark:text-white border overflow-x-auto rounded-xl ">
@@ -277,15 +283,15 @@
       <!-- Table Head -->
       <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
         <tr>
-          <th class="px-4 py-3 cursor-pointer hover:bg-gray-200" data-col="name">Name ↑↓</th>
-          <th class="px-4 py-3 cursor-pointer hover:bg-gray-200" data-col="department">Department ↑↓</th>
-          <th class="px-4 py-3 cursor-pointer hover:bg-gray-200" data-col="facebook">Facebook ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap"cursor-pointer hover:bg-gray-200" data-col="phone">Phone ↑↓</th>
-          <th class="px-4 py-3 cursor-pointer hover:bg-gray-200" data-col="address">Address ↑↓</th>
-          <th class="px-4 py-3 cursor-pointer hover:bg-gray-200" data-col="discord">Discord ↑↓</th>
-          <th class="px-4 py-3 cursor-pointer hover:bg-gray-200" data-col="email">Email ↑↓</th>
-          <th class="px-4 py-3 cursor-pointer hover:bg-gray-200" data-col="Division">Division ↑↓</th>
-          <th class="px-4 py-3 text-center whitespace-nowrap">Action</th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="name">Name ↑↓</th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="department">Department ↑↓</th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="facebook">Facebook ↑↓</th>
+          <th class="px-4 py-3 whitespace-nowrap "cursor-pointer hover:bg-gray-200" data-col="phone">Phone ↑↓</th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="address">Address ↑↓</th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="discord">Discord ↑↓</th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="email">Email ↑↓</th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="Division">Division ↑↓</th>
+          <th class="px-4 py-3  text-center whitespace-nowrap">Action</th>
           <!-- <td class="px-4 py-2 text-center whitespace-nowrap">
                    <button class="edit-btn bg-green-400 text-white px-2 py-1 rounded mr-2">Edit</button>
                    <button class="delete-btn bg-red-500 text-white px-2 py-1 rounded">Delete</button> -->
@@ -310,10 +316,32 @@
 
 <br /><br />
         <!-- <input type="submit" value="submit"> -->
-         
 
 
-        <div id="pagination" style="text-align:center; padding-bottom:20px;padding-top:0px;"></div>
+
+
+
+         <div class="w-[80%] mx-auto flex justify-between items-center mt-4">
+
+  <!-- Rows selector -->
+  <div class="flex items-center gap-2">
+    <span class="text-sm">Rows:</span>
+    <select id="rowsPerPage"
+      class="border rounded px-2 py-1 dark:bg-gray-800 dark:text-white">
+      <option value="5" selected>5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+  </div>
+
+  <!-- Pagination -->
+  <div id="pagination" style="text-align:center; padding-bottom:20px;padding-top:0px;"></div>
+
+</div>
+
+
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="new.js"></script>
 </body>

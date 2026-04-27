@@ -5,7 +5,15 @@ $(document).ready(function () {
     const $searchInput = $("#searchInput");
     const $searchColumn = $("#searchColumn");
     const $searchBtn = $("#searchBtn");
+    const $rowsPerPage = $("#rowsPerPage");
     const $paginationContainer = $("#pagination");
+
+
+    $rowsPerPage.on("change", function () {
+    rowsPerPage = parseInt($(this).val());
+    currentPage = 1; // reset page
+    loadData();
+    });
 
     $("input, select").on("input change", function () {
         $(this).removeClass("border-red-500");
@@ -17,13 +25,29 @@ $(document).ready(function () {
     let sortColumn = null;
     let sortDirection = "asc";
     let currentPage = 1;
-    let rowsPerPage = 10;
+    let rowsPerPage = 5;
 
     // ================= LOAD DATA
     function loadData() {
         let data = JSON.parse(localStorage.getItem("formData")) || [];
         renderTable(data);
     }
+
+    // LOAD করার সময়
+    rowsPerPage = parseInt(localStorage.getItem("rowsPerPage")) || 5;
+    $("#rowsPerPage").val(rowsPerPage);
+
+    // CHANGE হলে save করো
+    $rowsPerPage.on("change", function () {
+    rowsPerPage = parseInt($(this).val());
+    localStorage.setItem("rowsPerPage", rowsPerPage);
+    currentPage = 1;
+    loadData();
+    });
+
+
+
+
 
     // ================= FORM SUBMIT
     $form.on("submit", function (e) {
@@ -117,12 +141,12 @@ $(document).ready(function () {
                     <td class="px-4 py-2">${highlight(item.name)}</td>
                     <td class="px-4 py-2">${item.department}</td>
                     <td class="px-4 py-2">${item.facebook}</td>
-                    <td class="px-4 py-2">${item.phone}</td>
+                    <td class="px-4 py-2 whitespace-nowrap">${item.phone}</td>
                     <td class="px-4 py-2">${item.address}</td>
                     <td class="px-4 py-2">${item.discord}</td>
                     <td class="px-4 py-2">${highlight(item.email)}</td>
                     <td class="px-4 py-2">${item.Division}</td>
-                    <td class="px-4 py-2 text-center">
+                    <td class="px-4 py-2 text-center whitespace-nowrap">
                         <button class="edit-btn bg-green-400 text-white px-2 py-1 rounded" data-index="${realIndex}">Edit</button>
                         <button class="delete-btn bg-red-500 text-white px-2 py-1 rounded" data-index="${realIndex}">Delete</button>
                     </td>
