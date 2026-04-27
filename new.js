@@ -154,6 +154,15 @@ $(document).ready(function () {
             $tableBody.append(`<tr><td colspan="9" class="text-center py-4">No data found</td></tr>`);
         }
 
+        let end = start + paginated.length;
+
+        $("#rowInfo").text(`${data.length === 0 ? 0 : start + 1} - ${end} of ${data.length}`);
+
+
+
+
+
+
         $.each(paginated, function (i, item) {
 
             let realIndex = start + i;
