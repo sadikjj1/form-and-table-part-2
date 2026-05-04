@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sub-department form</title>
   <!-- <link href="./output.css" rel="stylesheet"> -->
+
+  <link rel="stylesheet" href="./input.css">  
    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
    <style type="text/tailwindcss">
@@ -205,7 +207,7 @@
         
         <textarea
         name="feedback"
-        class="w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-white-200 focus:outline-none text-shadow-white"
+        class="w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-white-200 focus:outline-none"
         id="feedback"
         placeholder="Please give us your feedback"
         rows="1"></textarea>
@@ -214,21 +216,33 @@
         <br /><br />
         <!-- <input type="submit" value="submit"> -->
          
-         <button type="submit" class="bg-gradient-to-r from-pink-500 to-blue-500 text-white font-bold py-4 px-4 rounded-xl">
-                  <span>Submit</span>
-        </button>
+         <button 
+           type="submit"
+           class="bg-linear-to-r from-pink-500 to-blue-500 
+         text-white font-bold 
+         py-3 px-6 
+         rounded-xl 
+         shadow-md
+         hover:scale-105 hover:shadow-lg
+         active:scale-95
+         transition duration-300
+         focus:outline-none focus:ring-2 focus:ring-blue-400"
+>
+  <span>Submit</span>
+</button>
         </form>
 
     </div>
 
 <br><br>
-    <div class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80%  p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none"">
+    <div class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80% rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none">
+    <!-- <div class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80% rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none""> -->
       <h2>Submitted Data Table</h2>
     </div>  
     
     
 
-<div class="w-[75%] mx-auto mt-6  flex justify-end gap-3 mb-4 ">
+<div class="w-[80%] mx-auto mt-4  flex justify-end gap-3 mb-4 ">
 
   <!-- SEARCH BAR -->
 
@@ -264,7 +278,7 @@
 />
 
     <button id="resetBtn"
-      class="px-4 py-2 bg-blue-600 text-black rounded-lg hover:bg-red-500">
+      class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-red-500">
       Reset
     </button>
 
@@ -275,32 +289,37 @@
       <!-- Search button -->
      <button id="searchBtn"
       class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-      Search
+      Search 
     </button> 
  
     </div>
 
     <div class="w-full max-w-6xl mx-auto mt-4 bg-white rounded-xl shadow-md overflow-hidden">
 
-  <div class="overflow-x-auto">
-    <table id="formTable" class=" w-full text-sm text-left border-collapse bg-white dark:bg-gray-700 text-black dark:text-white border overflow-x-auto rounded-xl ">
+
+
+      <div class="w-[80%] mx-auto mt-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md">
+
+    <!-- 🔥 SCROLL CONTAINER -->
+    <div class="overflow-x-auto max-h-100 overflow-y-auto">
+
+      <!-- <table class="min-w-[700px] w-full text-sm border-collapse"> -->
+    <table id="formTable" class=" w-full text-sm text-left border-collapse bg-white dark:bg-gray-700 text-black dark:text-white border rounded-xl ">
 
       <!-- Table Head -->
-      <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
+      <thead class="bg-gray-100 text-gray-700 uppercase text-xs sticky top-0 z-30">
         <tr>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="name">Name ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="department">Department ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="facebook">Facebook ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap "cursor-pointer hover:bg-gray-200" data-col="phone">Phone ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="address">Address ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="discord">Discord ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="email">Email ↑↓</th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="Division">Division ↑↓</th>
-          <th class="px-4 py-3  text-center whitespace-nowrap">Action</th>
-          <!-- <td class="px-4 py-2 text-center whitespace-nowrap">
-                   <button class="edit-btn bg-green-400 text-white px-2 py-1 rounded mr-2">Edit</button>
-                   <button class="delete-btn bg-red-500 text-white px-2 py-1 rounded">Delete</button> -->
-          <!-- </td> -->
+          <th class="px-4 py-3 sticky left-0 bg-gray-100 z-20 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="name">Name <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="department">Department <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="facebook">Facebook <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="phone">Phone <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="address">Address <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="discord">Discord <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="email">Email <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="Division">Division <span class="sort-icon"></span></th>
+          <th class="px-4 py-3 sticky right-0 bg-gray-100 z-20 text-center whitespace-nowrap">Action</th>
+          
         </tr>
       </thead>
 
@@ -312,43 +331,57 @@
     </table>
   </div>
 
+   <!--  extra ui  PART -->
+  <div class="flex justify-between items-center px-4 py-2 border-t bg-gray-50 dark:bg-gray-700">
+
 </div>
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
 
 
-<br /><br />
+
         <!-- <input type="submit" value="submit"> -->
 
+<!-- <div class="w-[80%] mx-auto flex justify-between items-center mt-4"> -->
 
 
 
+         
+<!-- 🔝 PAGINATION (TOP CENTER) -->
+<div class="flex justify-center items-center mt-3">
+  <div id="pagination" class="flex gap-2"></div>
+</div>
 
-         <div class="w-[80%] mx-auto flex justify-between items-center mt-4">
+<!-- 🔽 ROW SELECTOR (BOTTOM LEFT) -->
+<div class="flex justify-between items-center px-4 py-2 mt-2  bg-gray-50 dark:bg-gray-700">
 
+  <!-- LEFT
+  <div class="flex justify-between items-center px-4 py-2 mt-2 bg-gray-50 dark:bg-gray-700"> -->
 
-
-          
-  <!-- Rows selector -->
+  <!-- LEFT -->
   <div class="flex items-center gap-2">
     <span class="text-sm">Rows:</span>
-    
+
     <select id="rowsPerPage"
       class="border rounded px-2 py-1 dark:bg-gray-800 dark:text-white">
-      <option value="5" selected>5</option>
+      <option value="5">5</option>
       <option value="10">10</option>
       <option value="20">20</option>
       <option value="50">50</option>
     </select>
-    <span id="rowInfo" class="text-sm text-gray-600 dark:text-gray-300">there is an Error</span>
   </div>
 
-  <!-- Pagination -->
-  <div id="pagination" style="text-align:center; padding-bottom:20px;padding-top:0px;"></div>
+  <!-- RIGHT -->
+  <span id="rowInfo" class="flex justify-start text-sm text-gray-600 dark:text-gray-300"></span>
 
 </div>
+</div>
+
+  </div>
+
+</div>
+
+
+
+
 
 
         

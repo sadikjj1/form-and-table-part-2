@@ -10,11 +10,11 @@ $(document).ready(function () {
     const $paginationContainer = $("#pagination");
 
 
-    $rowsPerPage.on("change", function () {
-    rowsPerPage = parseInt($(this).val());
-    currentPage = 1; // reset page
-    loadData();
-    });
+    // $rowsPerPage.on("change", function () {
+    // rowsPerPage = parseInt($(this).val());
+    // currentPage = 1; // reset page
+    // loadData();
+    // });
 
     $resetBtn.on("click", function () {
         $searchInput.val("");
@@ -167,22 +167,28 @@ $(document).ready(function () {
 
             let realIndex = start + i;
 
-            let row = `
-                <tr>
-                    <td class="px-4 py-2">${highlight(item.name)}</td>
-                    <td class="px-4 py-2">${item.department}</td>
-                    <td class="px-4 py-2">${item.facebook}</td>
-                    <td class="px-4 py-2 whitespace-nowrap">${item.phone}</td>
-                    <td class="px-4 py-2">${item.address}</td>
-                    <td class="px-4 py-2">${item.discord}</td>
-                    <td class="px-4 py-2">${highlight(item.email)}</td>
-                    <td class="px-4 py-2">${item.Division}</td>
-                    <td class="px-4 py-2 text-center whitespace-nowrap">
-                        <button class="edit-btn bg-green-400 text-white px-2 py-1 rounded" data-index="${realIndex}">Edit</button>
+                    let row = `
+                    <tr>
+                    <!--STICKY NAME -->
+                    <td class="px-4 py-2 sticky left-0 bg-white dark:bg-gray-800 z-20 whitespace-nowrap">
+                        ${highlight(item.name,"name")}
+                    </td>
+
+                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.department, "department")}</td>
+                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.facebook, "facebook")}</td>
+                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.phone, "phone")}</td>
+                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.address, "address")}</td>
+                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.discord, "discord")}</td>
+                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.email, "email")}</td>
+                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.Division, "Division")}</td>
+
+                    <!-- ✅ STICKY ACTION -->
+                    <td class="px-4 py-2 sticky right-0 bg-white dark:bg-gray-800 z-20 text-center whitespace-nowrap">
+                        <button class="edit-btn bg-green-400 text-white px-2 py-1 rounded mr-2" data-index="${realIndex}">Edit</button>
                         <button class="delete-btn bg-red-500 text-white px-2 py-1 rounded" data-index="${realIndex}">Delete</button>
                     </td>
-                </tr>
-            `;
+                    </tr>
+                    `;
 
             $tableBody.append(row);
         });
@@ -270,19 +276,35 @@ $(document).ready(function () {
 
     // ================= SORT
     $("#formTable th").on("click", function () {
-        let col = $(this).data("col");
 
-        if (!col || col === "action") return;
+    let col = $(this).data("col");
+    if (!col) return;
 
-        if (sortColumn === col) {
-            sortDirection = sortDirection === "asc" ? "desc" : "asc";
-        } else {
-            sortColumn = col;
-            sortDirection = "asc";
-        }
+    if (sortColumn === col) {
+        sortDirection = sortDirection === "asc" ? "desc" : "asc";
+    } else {
+        sortColumn = col;
+        sortDirection = "asc";
+    }
 
-        loadData();
+    updateSortIcons(); // 🔥 add this
+    loadData();
     });
+
+    // ================= SORT ICON FUNCTION 
+    function updateSortIcons() {
+
+    $(".sort-icon").html("");
+
+    let arrow = sortDirection === "asc" ? "↑" : "↓";
+
+    $(`#formTable th[data-col="${sortColumn}"] .sort-icon`).html(arrow);
+    }
+
+
+
+
+
 
     // ================= PAGINATION
     function renderPagination(total) {
@@ -331,13 +353,22 @@ $(document).ready(function () {
     $paginationContainer.append(nextBtn);
 }
     // ================= HIGHLIGHT
-    function highlight(text) {
-        let term = $searchInput.val();
-        if (!term) return text;
+   function highlight(text, columnName) {
 
-        let regex = new RegExp(`(${term})`, "gi");
-        return String(text).replace(regex, `<mark class="bg-yellow-200">$1</mark>`);
+    let term = $searchInput.val().toLowerCase();
+    let selectedColumn = $searchColumn.val();
+
+    if (!term) return text;
+
+    // যদি specific column select করা থাকে
+    if (selectedColumn !== "all" && selectedColumn !== columnName) {
+        return text; //  অন্য column এ highlight করবে না
     }
+
+    let regex = new RegExp(`(${term})`, "gi");
+
+    return String(text).replace(regex, `<mark class="bg-yellow-300">$1</mark>`);
+}
 
 
     // ================= THEME INIT (page reload এ remember করবে)
@@ -364,7 +395,7 @@ $("#themeToggle").on("click", function () {
     localStorage.setItem("theme", isDark ? "dark" : "light");
 
     // change button text
-    $(this).text(isDark ? "Light Mode" : "Dark Mode");
+    $(this).find("span").text(isDark ? "Light Mode" : "Dark Mode");
 });
 
 
