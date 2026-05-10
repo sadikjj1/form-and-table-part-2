@@ -9,10 +9,7 @@
 <link rel="stylesheet" href="./input.css">  
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-<style type="text/tailwindcss">
-@import 'tailwindcss';
-
-    <!-- DataTables Tailwind Integration CSS -->
+<!-- DataTables Tailwind Integration CSS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.tailwindcss.min.css">
 
 <!-- jQuery (You already have this) -->
@@ -22,7 +19,8 @@
 <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.0/js/dataTables.tailwindcss.min.js"></script>
 
-   @import 'tailwindcss';
+<style type="text/tailwindcss">
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 /* hi this is new comment */
@@ -53,7 +51,7 @@ Assign yourself to a sub-department
 <form id="mainForm" class=" bg-pink-200  dark:bg-gray-800 text-black dark:text-white p-8 m-10 rounded-[10px] shadow-md hover:text-shadow-lime-300 " >
 <br/>
 <h5 >আপনার নাম (*):</h5>
-<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="name" placeholder="Your name"/>
+<input type="text" class=" bg-amber-50 dark:bg-gray-700 dark:text-white w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="name" placeholder="Your name"/>
 
 <p id="nameError" class="text-red-500 text-sm hidden">This field is required</p>
 
@@ -145,7 +143,7 @@ CRM ও কাস্টমার সাকসেস(মার্কেটিং 
 <br/>
 <h5>ফেসবুক আইডি (*):</h5>
 <br/>
-<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="facebook" placeholder="Your answer" />
+<input type="text" class=" bg-amber-50 dark:bg-gray-700 dark:text-white w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="facebook" placeholder="Your answer" />
 
 <p id="facebookError" class="text-red-500 text-sm hidden">This field is required</p>
 
@@ -155,7 +153,7 @@ CRM ও কাস্টমার সাকসেস(মার্কেটিং 
 <br/>
 <h5>মোবাইল নাম্বার ( হোয়াটসঅ্যাপ) (*):</h5>
 <br/>
-<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="phone" placeholder="01XXXXXXXXX" />
+<input type="text" class=" bg-amber-50 dark:bg-gray-700 dark:text-white w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="phone" placeholder="01XXXXXXXXX" />
 
 
 <p id="phoneError" class="text-red-500 text-sm hidden">This field is required</p>
@@ -163,7 +161,7 @@ CRM ও কাস্টমার সাকসেস(মার্কেটিং 
 
 <br/><br/>
 <h5>ঠিকানা (*):</h5><br/>
-<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="address" placeholder="Your answer" />
+<input type="text" class=" bg-amber-50 dark:bg-gray-700 dark:text-white w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="address" placeholder="Your answer" />
 
 <p id="addressError" class="text-red-500 text-sm hidden">This field is required</p>
 
@@ -188,7 +186,7 @@ CRM ও কাস্টমার সাকসেস(মার্কেটিং 
 <br />
 
 <h5>ইমেইল:(*)</h5><br/>
-<input type="email" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none"  name="email" placeholder="Your Email Address" />
+<input type="email" class=" bg-amber-50 dark:bg-gray-700 dark:text-white w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none"  name="email" placeholder="Your Email Address" />
 
 <p id="emailError" class="text-red-500 text-sm hidden">This field is required</p>
 
@@ -197,7 +195,7 @@ CRM ও কাস্টমার সাকসেস(মার্কেটিং 
 <h5>জেলা নির্বাচন কর (*):</h5>
 <br/>
 
-<select name="Division" class="bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none">
+<select name="Division" class="bg-amber-50 dark:bg-gray-700 dark:text-white w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none">
 <option value="" disabled selected>আপনার বিভাগ নির্বাচন করুন</option>
 
 <option value="Barisal">Barisal</option>

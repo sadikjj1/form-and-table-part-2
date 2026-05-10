@@ -314,7 +314,7 @@ $paginationContainer.empty();
 let totalPages = Math.ceil(total / rowsPerPage);
 
 // ===== PREVIOUS BUTTON
-let prevBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 mr-2">Prev</button>`);
+let prevBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 dark:bg-gray-700 dark:text-white mr-2">Prev</button>`);
 
 prevBtn.prop("disabled", currentPage === 1);
 
@@ -340,7 +340,7 @@ $paginationContainer.append(btn);
 }
 
 // ===== NEXT BUTTON
-let nextBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 ml-2">Next</button>`);
+let nextBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 dark:bg-gray-700 dark:text-white  ml-2">Next</button>`);
 
 nextBtn.prop("disabled", currentPage === totalPages);
 
