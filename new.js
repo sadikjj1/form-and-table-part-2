@@ -247,7 +247,7 @@ $("#themeToggle").on("click", function () {
 });
 
 
-
+// this is the last change commit for jquirey data table addition.
 
     // INIT
     updateTheme();
