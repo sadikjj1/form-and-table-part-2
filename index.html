@@ -1,396 +1,402 @@
 <!doctype html>   
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sub-department form</title>
-  <!-- <link href="./output.css" rel="stylesheet"> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sub-department form</title>
+<!-- <link href="./output.css" rel="stylesheet"> -->
 
-  <link rel="stylesheet" href="./input.css">  
-   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="./input.css">  
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.tailwindcss.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-   <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-   <script src="https://cdn.datatables.net/2.0.0/js/dataTables.tailwindcss.min.js"></script>
+<style type="text/tailwindcss">
+@import 'tailwindcss';
 
-   <style type="text/tailwindcss">
+    <!-- DataTables Tailwind Integration CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.tailwindcss.min.css">
+
+<!-- jQuery (You already have this) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- DataTables Core JS -->
+<script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.0/js/dataTables.tailwindcss.min.js"></script>
+
    @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 /* hi this is new comment */
 
 </style>
-   
-   <!-- <script>
-  tailwind.config = {
-    darkMode: 'class'
-  }
+
+<!-- <script>
+ tailwind.config = {
+   darkMode: 'class'
+ }
 </script> -->
 
 
 </head>
 <body class="bg-blue-300 text-black dark:bg-gray-900 dark:text-white">
-    <!-- <button id="themeToggle">Mode change</button> -->
-    <div >
-    <button id="themeToggle" class="bg-black text-white font-bold py-2 px-4 rounded-xl m-2 ">
-                  <span>Dark Mode</span>
-        </button>
-    </div>    
-    <br />
-
-    <h1 class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80%">
-    Assign yourself to a sub-department    
-    </h1>
-    <div class="box-content md:box-border bg-red-300 w-[80%] h-auto mx-auto rounded-[10px] shadow-md p-10">
-    <form id="mainForm" class=" bg-pink-200  dark:bg-gray-800 text-black dark:text-white p-8 m-10 rounded-[10px] shadow-md hover:text-shadow-lime-300 " >
-    <br/>
-        <h5 >আপনার নাম (*):</h5>
-    <input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="name" placeholder="Your name"/>
-
-      <p id="nameError" class="text-red-500 text-sm hidden">This field is required</p>
-
-    <br/><br/>
-    <h5>আপনি কোন sub-department এ আগ্রহী ? (*)</h5>
-    <br/>
-      
-    <div class="focus:shadow-md focus:shadow-green-500 ">
-        <div >
-            <label for ="id1">
-            <input type="radio" value="ফ্রন্ট-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)"
-            name="class" id="id1"/>
-            ফ্রন্ট-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)
-            </label>
-        </div>
-        <br/>
-        <div>
-            <label for ="id2">
-            <input type="radio" value="ব্যাক-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)"
-            name="class" id="id2"/>
-            ব্যাক-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)
-            </label>
-        </div>
-        <br/>
-        <div>
-            <label for ="id3">
-            <input type="radio" value=" DevOps & QA(সফটওয়্যার ইঞ্জিনিয়ারিং)"
-            name="class" id="id3"/>
-             DevOps & QA(সফটওয়্যার ইঞ্জিনিয়ারিং)
-            </label>
-        </div>
-        <br/>
-        <div>
-            <label for ="id4">
-            <input type="radio" value="UI/UX (Figma) (UI/UX ও ডিজাইন)"
-            name="class" id="id4"/>
-             UI/UX (Figma) (UI/UX ও ডিজাইন)
-            </label>
-        </div>
-        <br/>
-        <div>
-            <label for ="id5">
-            <input type="radio" value="গ্রাফিক্স ডিজাইন (UI/UX ও ডিজাইন)"
-            name="class" id="id5"/>
-             গ্রাফিক্স ডিজাইন (UI/UX ও ডিজাইন)
-            </label>
-        </div>
-        <br/>
-        
-        <div>
-            <label for ="id6">
-            <input type="radio" value="বিজনেস অ্যানালিস্ট / এজাইল অ্যানালিস্ট(প্রোডাক্ট ও বিজনেস
-          অ্যানালাইসিস)"
-            name="class" id="id6"/>
-             বিজনেস অ্যানালিস্ট / এজাইল অ্যানালিস্ট(প্রোডাক্ট ও বিজনেস
-          অ্যানালাইসিস)
-            </label>
-
-        </div>
-        <br/>
-        <div>
-            <label for ="id7">
-            <input type="radio" value="প্রজেক্ট ম্যানেজার (প্রোডাক্ট ও বিজনেস
-          অ্যানালাইসিস)" name="class" id="id7"/>
-             প্রজেক্ট ম্যানেজার (প্রোডাক্ট ও বিজনেস
-          অ্যানালাইসিস)
-            </label>
-
-        </div>
-        <br/>
-        <div>
-            <label for ="id8">
-            <input type="radio" value="ডিজিটাল মার্কেটিং(মার্কেটিং ও কাস্টমার সাকসেস)" name="class" id="id8"/>
-             ডিজিটাল মার্কেটিং(মার্কেটিং ও কাস্টমার সাকসেস)
-            </label>
-        </div>
-        <br/>
-        <div>
-            <label for ="id9">
-            <input type="radio" value="CRM ও কাস্টমার সাকসেস(মার্কেটিং ও কাস্টমার সাকসেস)" name="class" id="id9"/>
-             CRM ও কাস্টমার সাকসেস(মার্কেটিং ও কাস্টমার সাকসেস)
-            </label>
-        </div>
-
-
-        
-        <p id="classError" class="text-red-500 text-sm hidden">This field is required</p>
-    </div>
-        <br/>
-        <h5>ফেসবুক আইডি (*):</h5>
-        <br/>
-        <input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="facebook" placeholder="Your answer" />
-        
-        <p id="facebookError" class="text-red-500 text-sm hidden">This field is required</p>
-        
-        
-        
-        <br/> 
-        <br/>
-        <h5>মোবাইল নাম্বার ( হোয়াটসঅ্যাপ) (*):</h5>
-        <br/>
-        <input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="phone" placeholder="01XXXXXXXXX" />
-
-       
-        <p id="phoneError" class="text-red-500 text-sm hidden">This field is required</p>
-        
-        
-        <br/><br/>
-        <h5>ঠিকানা (*):</h5><br/>
-        <input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="address" placeholder="Your answer" />
-     
-        <p id="addressError" class="text-red-500 text-sm hidden">This field is required</p>
-        
-        
-        <br/>
-
-        <br/><h5>আপনি কি ডিসকর্ডে আছেন? (*):</h5>
-         <p id="DiscordError" class="text-red-500 text-sm hidden">This field is required</p>
-        <div class="flex space-x-5">
-        <label for="id10">
-          
-         
-        <input type="radio" value="হ্যাঁ" name="Discord" id="id10" />
-        হ্যাঁ
-        </label>
-        
-        <label for="id11">
-        <input type="radio" value="না" name="Discord" id="id11" />
-        না
-        </label>
-        </div>
-        <br />
-
-        <h5>ইমেইল:(*)</h5><br/>
-        <input type="email" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none"  name="email" placeholder="Your Email Address" />
-        
-        <p id="emailError" class="text-red-500 text-sm hidden">This field is required</p>
-        
-        <br/>
-        <br/>
-        <h5>জেলা নির্বাচন কর (*):</h5>
-        <br/>
-
-        <select name="Division" class="bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none">
-        <option value="" disabled selected>আপনার বিভাগ নির্বাচন করুন</option>
-
-        <option value="Barisal">Barisal</option>
-        <option value="Chattogram">Chattogram</option>
-        <option value="Dhaka">Dhaka</option>
-        <option value="Khulna">Khulna</option>
-        <option value="Mymensingh">Mymensingh</option>
-        <option value="Rajshahi">Rajshahi</option>
-        <option value="Rangpur">Rangpur</option>
-        <option value="Sylhet">Sylhet</option>
-        </select>
-
-        
-        <p id="DivisionError" class="text-red-500 text-sm hidden">This field is required</p>
-        
-        <br/><br/>
-        <h5>your feedback:</h5>
-        <br/>
-        
-        <textarea
-        name="feedback"
-        class="w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-white-200 focus:outline-none"
-        id="feedback"
-        placeholder="Please give us your feedback"
-        rows="1"></textarea>
-
-
-        <br /><br />
-        <!-- <input type="submit" value="submit"> -->
-         
-         <button 
-           type="submit"
-           class="bg-linear-to-r from-pink-500 to-blue-500 
-         text-white font-bold 
-         py-3 px-6 
-         rounded-xl 
-         shadow-md
-         hover:scale-105 hover:shadow-lg
-         active:scale-95
-         transition duration-300
-         focus:outline-none focus:ring-2 focus:ring-blue-400"
->
-  <span>Submit</span>
+<!-- <button id="themeToggle">Mode change</button> -->
+<div >
+<button id="themeToggle" class="bg-black text-white font-bold py-2 px-4 rounded-xl m-2 ">
+<span>Dark Mode</span>
 </button>
-        </form>
+</div>    
+<br />
 
-    </div>
+<h1 class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80%">
+Assign yourself to a sub-department    
+</h1>
+<div class="box-content md:box-border bg-red-300 w-[80%] h-auto mx-auto rounded-[10px] shadow-md p-10">
+<form id="mainForm" class=" bg-pink-200  dark:bg-gray-800 text-black dark:text-white p-8 m-10 rounded-[10px] shadow-md hover:text-shadow-lime-300 " >
+<br/>
+<h5 >আপনার নাম (*):</h5>
+<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="name" placeholder="Your name"/>
+
+<p id="nameError" class="text-red-500 text-sm hidden">This field is required</p>
+
+<br/><br/>
+<h5>আপনি কোন sub-department এ আগ্রহী ? (*)</h5>
+<br/>
+
+<div class="focus:shadow-md focus:shadow-green-500 ">
+<div >
+<label for ="id1">
+<input type="radio" value="ফ্রন্ট-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)"
+name="class" id="id1"/>
+ফ্রন্ট-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)
+</label>
+</div>
+<br/>
+<div>
+<label for ="id2">
+<input type="radio" value="ব্যাক-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)"
+name="class" id="id2"/>
+ব্যাক-এন্ড ইঞ্জিনিয়ার (সফটওয়্যার ইঞ্জিনিয়ারিং)
+</label>
+</div>
+<br/>
+<div>
+<label for ="id3">
+<input type="radio" value=" DevOps & QA(সফটওয়্যার ইঞ্জিনিয়ারিং)"
+name="class" id="id3"/>
+DevOps & QA(সফটওয়্যার ইঞ্জিনিয়ারিং)
+</label>
+</div>
+<br/>
+<div>
+<label for ="id4">
+<input type="radio" value="UI/UX (Figma) (UI/UX ও ডিজাইন)"
+name="class" id="id4"/>
+UI/UX (Figma) (UI/UX ও ডিজাইন)
+</label>
+</div>
+<br/>
+<div>
+<label for ="id5">
+<input type="radio" value="গ্রাফিক্স ডিজাইন (UI/UX ও ডিজাইন)"
+name="class" id="id5"/>
+গ্রাফিক্স ডিজাইন (UI/UX ও ডিজাইন)
+</label>
+</div>
+<br/>
+
+<div>
+<label for ="id6">
+<input type="radio" value="বিজনেস অ্যানালিস্ট / এজাইল অ্যানালিস্ট(প্রোডাক্ট ও বিজনেস
+         অ্যানালাইসিস)"
+name="class" id="id6"/>
+বিজনেস অ্যানালিস্ট / এজাইল অ্যানালিস্ট(প্রোডাক্ট ও বিজনেস
+অ্যানালাইসিস)
+</label>
+
+</div>
+<br/>
+<div>
+<label for ="id7">
+<input type="radio" value="প্রজেক্ট ম্যানেজার (প্রোডাক্ট ও বিজনেস
+         অ্যানালাইসিস)" name="class" id="id7"/>
+প্রজেক্ট ম্যানেজার (প্রোডাক্ট ও বিজনেস
+অ্যানালাইসিস)
+</label>
+
+</div>
+<br/>
+<div>
+<label for ="id8">
+<input type="radio" value="ডিজিটাল মার্কেটিং(মার্কেটিং ও কাস্টমার সাকসেস)" name="class" id="id8"/>
+ডিজিটাল মার্কেটিং(মার্কেটিং ও কাস্টমার সাকসেস)
+</label>
+</div>
+<br/>
+<div>
+<label for ="id9">
+<input type="radio" value="CRM ও কাস্টমার সাকসেস(মার্কেটিং ও কাস্টমার সাকসেস)" name="class" id="id9"/>
+CRM ও কাস্টমার সাকসেস(মার্কেটিং ও কাস্টমার সাকসেস)
+</label>
+</div>
+
+
+
+<p id="classError" class="text-red-500 text-sm hidden">This field is required</p>
+</div>
+<br/>
+<h5>ফেসবুক আইডি (*):</h5>
+<br/>
+<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="facebook" placeholder="Your answer" />
+
+<p id="facebookError" class="text-red-500 text-sm hidden">This field is required</p>
+
+
+
+<br/> 
+<br/>
+<h5>মোবাইল নাম্বার ( হোয়াটসঅ্যাপ) (*):</h5>
+<br/>
+<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="phone" placeholder="01XXXXXXXXX" />
+
+
+<p id="phoneError" class="text-red-500 text-sm hidden">This field is required</p>
+
+
+<br/><br/>
+<h5>ঠিকানা (*):</h5><br/>
+<input type="text" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none" name="address" placeholder="Your answer" />
+
+<p id="addressError" class="text-red-500 text-sm hidden">This field is required</p>
+
+
+<br/>
+
+<br/><h5>আপনি কি ডিসকর্ডে আছেন? (*):</h5>
+<p id="DiscordError" class="text-red-500 text-sm hidden">This field is required</p>
+<div class="flex space-x-5">
+<label for="id10">
+
+
+<input type="radio" value="হ্যাঁ" name="Discord" id="id10" />
+হ্যাঁ
+</label>
+
+<label for="id11">
+<input type="radio" value="না" name="Discord" id="id11" />
+না
+</label>
+</div>
+<br />
+
+<h5>ইমেইল:(*)</h5><br/>
+<input type="email" class=" bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none"  name="email" placeholder="Your Email Address" />
+
+<p id="emailError" class="text-red-500 text-sm hidden">This field is required</p>
+
+<br/>
+<br/>
+<h5>জেলা নির্বাচন কর (*):</h5>
+<br/>
+
+<select name="Division" class="bg-amber-50 w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none">
+<option value="" disabled selected>আপনার বিভাগ নির্বাচন করুন</option>
+
+<option value="Barisal">Barisal</option>
+<option value="Chattogram">Chattogram</option>
+<option value="Dhaka">Dhaka</option>
+<option value="Khulna">Khulna</option>
+<option value="Mymensingh">Mymensingh</option>
+<option value="Rajshahi">Rajshahi</option>
+<option value="Rangpur">Rangpur</option>
+<option value="Sylhet">Sylhet</option>
+</select>
+
+
+<p id="DivisionError" class="text-red-500 text-sm hidden">This field is required</p>
+
+<br/><br/>
+<h5>your feedback:</h5>
+<br/>
+
+<textarea
+name="feedback"
+class="w-full p-2 border rounded shadow-inner focus:shadow-md focus:shadow-white-200 focus:outline-none"
+id="feedback"
+placeholder="Please give us your feedback"
+rows="1"></textarea>
+
+
+<br /><br />
+<!-- <input type="submit" value="submit"> -->
+
+<button 
+type="submit"
+class="bg-linear-to-r from-pink-500 to-blue-500 
+        text-white font-bold 
+        py-3 px-6 
+        rounded-xl 
+        shadow-md
+        hover:scale-105 hover:shadow-lg
+        active:scale-95
+        transition duration-300
+        focus:outline-none focus:ring-2 focus:ring-blue-400"
+>
+<span>Submit</span>
+</button>
+</form>
+
+</div>
 
 <br><br>
-    <div class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80% rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none">
-    <!-- <div class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80% rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none""> -->
-      <h2>Submitted Data Table</h2>
-    </div>  
-    
-    
+<div class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80% rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none">
+<!-- <div class="block text-center bg-gray-400 px-4 py-1 rounded-xs-[2px] w-fit mx-auto mb-8 text-xl font-bold font-stretch-80% rounded shadow-inner focus:shadow-md focus:shadow-green-500 focus:outline-none""> -->
+<h2>Submitted Data Table</h2>
+</div>  
+
+
 
 <div class="w-[80%] mx-auto mt-4  flex justify-end gap-3 mb-4 ">
 
-  <!-- SEARCH BAR -->
+<!-- SEARCH BAR -->
 
-    <select id="searchColumn"
-      class="bg-white dark:bg-gray-700 text-black dark:text-white border px-3 py-2 rounded-lg">
-      <option value="all">All Columns</option>
-      <option value="name">Name</option>
-      <option value="department">Department</option>
-      <option value="facebook">Facebook</option>
-      <option value="phone">Phone</option>
-      <option value="address">Address</option>
-      <option value="email">Email</option>
-      <option value="Division">Division</option>
-      <option value="discord">Discord</option>
-    </select>
-    <!-- <div class="relative">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-    </div> -->
-  
-
+<select id="searchColumn"
+class="bg-white dark:bg-gray-700 text-black dark:text-white border px-3 py-2 rounded-lg">
+<option value="all">All Columns</option>
+<option value="name">Name</option>
+<option value="department">Department</option>
+<option value="facebook">Facebook</option>
+<option value="phone">Phone</option>
+<option value="address">Address</option>
+<option value="email">Email</option>
+<option value="Division">Division</option>
+<option value="discord">Discord</option>
+</select>
+<!-- <div class="relative">
+     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+   </div> -->
 
 
-      
+
+
+
 <input 
-  class="px-3 py-2 w-85 bg-gray-100 text-black dark:bg-gray-800 dark:text-white 
-         border border-blue-300 rounded-lg 
-         placeholder-gray-500 dark:placeholder-gray-400
-         focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white dark:focus:bg-gray-700
-         transition duration-200"
-  type="text"
-  id="searchInput"
-  placeholder="🔍 Search..."
+class="px-3 py-2 w-85 bg-gray-100 text-black dark:bg-gray-800 dark:text-white 
+        border border-blue-300 rounded-lg 
+        placeholder-gray-500 dark:placeholder-gray-400
+        focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white dark:focus:bg-gray-700
+        transition duration-200"
+type="text"
+id="searchInput"
+placeholder="🔍 Search..."
 />
 
-    <button id="resetBtn"
-      class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-red-500">
-      Reset
-    </button>
+<button id="resetBtn"
+class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-red-500">
+Reset
+</button>
 
 
 
-        
-
-      <!-- Search button -->
-     <button id="searchBtn"
-      class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-      Search 
-    </button> 
- 
-    </div>
-
-    <div class="w-full max-w-6xl mx-auto mt-4 bg-white rounded-xl shadow-md overflow-hidden">
 
 
+<!-- Search button -->
+<button id="searchBtn"
+class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+Search 
+</button> 
 
-      <div class="w-[80%] mx-auto mt-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
-  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md">
+</div>
 
-    <!-- 🔥 SCROLL CONTAINER -->
-    <div class="overflow-x-auto max-h-100 overflow-y-auto">
+<div class="w-full max-w-6xl mx-auto mt-4 bg-white rounded-xl shadow-md overflow-hidden">
 
-      <!-- <table class="min-w-[700px] w-full text-sm border-collapse"> -->
-    <table id="formTable" class=" w-full text-sm text-left border-collapse bg-white dark:bg-gray-700 text-black dark:text-white border rounded-xl ">
 
-      <!-- Table Head -->
-      <thead class="bg-gray-100 text-gray-700 uppercase text-xs sticky top-0 z-30">
-        <tr>
-          <th class="px-4 py-3 sticky left-0 bg-gray-100 z-20 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="name">Name <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="department">Department <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="facebook">Facebook <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="phone">Phone <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="address">Address <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="discord">Discord <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="email">Email <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="Division">Division <span class="sort-icon"></span></th>
-          <th class="px-4 py-3 sticky right-0 bg-gray-100 z-20 text-center whitespace-nowrap">Action</th>
-          
-        </tr>
-      </thead>
 
-      <!-- Table Body -->
-      <tbody class="divide-y divide-white-200">
-        <!-- Dynamic rows আসবে এখানে -->
-      </tbody>
+<div class="w-[80%] mx-auto mt-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-md">
 
-    </table>
-  </div>
+<!-- 🔥 SCROLL CONTAINER -->
+<div class="overflow-x-auto max-h-100 overflow-y-auto">
 
-   <!--  extra ui  PART -->
-  <div class="flex justify-between items-center px-4 py-2 border-t bg-gray-50 dark:bg-gray-700">
+<!-- <table class="min-w-[700px] w-full text-sm border-collapse"> -->
+<table id="formTable" class=" w-full text-sm text-left border-collapse bg-white dark:bg-gray-700 text-black dark:text-white border rounded-xl ">
+
+<!-- Table Head -->
+<thead class="bg-gray-100 text-gray-700 uppercase text-xs sticky top-0 z-30">
+<tr>
+<th class="px-4 py-3 sticky left-0 bg-gray-100 z-20 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="name">Name <span class="sort-icon"></span></th>
+<th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="department">Department <span class="sort-icon"></span></th>
+<th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="facebook">Facebook <span class="sort-icon"></span></th>
+<th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="phone">Phone <span class="sort-icon"></span></th>
+<th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="address">Address <span class="sort-icon"></span></th>
+<th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="discord">Discord <span class="sort-icon"></span></th>
+<th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="email">Email <span class="sort-icon"></span></th>
+<th class="px-4 py-3 whitespace-nowrap cursor-pointer hover:bg-gray-200" data-col="Division">Division <span class="sort-icon"></span></th>
+<th class="px-4 py-3 sticky right-0 bg-gray-100 z-20 text-center whitespace-nowrap">Action</th>
+
+</tr>
+</thead>
+
+<!-- Table Body -->
+<tbody class="divide-y divide-white-200">
+<!-- Dynamic rows আসবে এখানে -->
+</tbody>
+
+</table>
+</div>
+
+<!--  extra ui  PART -->
+<div class="flex justify-between items-center px-4 py-2 border-t bg-gray-50 dark:bg-gray-700">
 
 </div>
 
 
 
-        <!-- <input type="submit" value="submit"> -->
+<!-- <input type="submit" value="submit"> -->
 
 <!-- <div class="w-[80%] mx-auto flex justify-between items-center mt-4"> -->
 
 
 
-         
+
 <!-- 🔝 PAGINATION (TOP CENTER) -->
 <div class="flex justify-center items-center mt-3">
-  <div id="pagination" class="flex gap-2"></div>
+<div id="pagination" class="flex gap-2"></div>
 </div>
 
 <!-- 🔽 ROW SELECTOR (BOTTOM LEFT) -->
 <div class="flex justify-between items-center px-4 py-2 mt-2  bg-gray-50 dark:bg-gray-700">
 
-  <!-- LEFT
-  <div class="flex justify-between items-center px-4 py-2 mt-2 bg-gray-50 dark:bg-gray-700"> -->
+<!-- LEFT
+ <div class="flex justify-between items-center px-4 py-2 mt-2 bg-gray-50 dark:bg-gray-700"> -->
 
-  <!-- LEFT -->
-  <div class="flex items-center gap-2">
-    <span class="text-sm">Rows:</span>
+<!-- LEFT -->
+<div class="flex items-center gap-2">
+<span class="text-sm">Rows:</span>
 
-    <select id="rowsPerPage"
-      class="border rounded px-2 py-1 dark:bg-gray-800 dark:text-white">
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="20">20</option>
-      <option value="50">50</option>
-    </select>
-  </div>
+<select id="rowsPerPage"
+class="border rounded px-2 py-1 dark:bg-gray-800 dark:text-white">
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="20">20</option>
+<option value="50">50</option>
+</select>
+</div>
 
-  <!-- RIGHT -->
-  <span id="rowInfo" class="flex justify-start text-sm text-gray-600 dark:text-gray-300"></span>
+<!-- RIGHT -->
+<span id="rowInfo" class="flex justify-start text-sm text-gray-600 dark:text-gray-300"></span>
 
 </div>
 </div>
 
-  </div>
+</div>
 
 </div>
 
 
 
-<!-- rhis is the last change commit for jquery data table addition. -->
 
 
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="new.js"></script>
+<!-- this is the last change commit for jquery data table addition(2). -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="new.js"></script>
 </body>
-</html>
