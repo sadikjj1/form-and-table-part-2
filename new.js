@@ -124,78 +124,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-    // ================= RENDER TABLE
-    function renderTable(data) {
-
-        if (sortColumn) {
-            data.sort((a, b) => {
-                let A = String(a[sortColumn] || "").toLowerCase();
-                let B = String(b[sortColumn] || "").toLowerCase();
-                return sortDirection === "asc"
-                    ? A.localeCompare(B)
-                    : B.localeCompare(A);
-            });
-        }
-
-        let start = (currentPage - 1) * rowsPerPage;
-        let paginated = data.slice(start, start + rowsPerPage);
-
-        $tableBody.empty();
-
-        if (paginated.length === 0) {
-            $tableBody.append(`<tr><td colspan="9" class="text-center py-4">No data found</td></tr>`);
-        }
-
-        let end = start + paginated.length;
-
-        $("#rowInfo").text(`${data.length === 0 ? 0 : start + 1} - ${end} of ${data.length}`);
-
-
-
-
-
-
-        $.each(paginated, function (i, item) {
-
-            let realIndex = start + i;
-
-                    let row = `
-                    <tr>
-                    <!--STICKY NAME -->
-                    <td class="px-4 py-2 sticky left-0 bg-white dark:bg-gray-800 z-20 whitespace-nowrap">
-                        ${highlight(item.name,"name")}
-                    </td>
-
-                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.department, "department")}</td>
-                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.facebook, "facebook")}</td>
-                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.phone, "phone")}</td>
-                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.address, "address")}</td>
-                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.discord, "discord")}</td>
-                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.email, "email")}</td>
-                    <td class="px-4 py-2 whitespace-nowrap">${highlight(item.Division, "Division")}</td>
-
-                    <!-- ✅ STICKY ACTION -->
-                    <td class="px-4 py-2 sticky right-0 bg-white dark:bg-gray-800 z-20 text-center whitespace-nowrap">
-                        <button class="edit-btn bg-green-400 text-white px-2 py-1 rounded mr-2" data-index="${realIndex}">Edit</button>
-                        <button class="delete-btn bg-red-500 text-white px-2 py-1 rounded" data-index="${realIndex}">Delete</button>
-                    </td>
-                    </tr>
-                    `;
-
-            $tableBody.append(row);
-        });
-
-        renderPagination(data.length);
-    }
-
     // ================= DELETE
 
     
@@ -250,25 +178,7 @@ $(document).ready(function () {
     });
 
     // ================= SEARCH
-    function filterData() {
-        let text = $searchInput.val().toLowerCase();
-        let column = $searchColumn.val();
-
-        let data = JSON.parse(localStorage.getItem("formData")) || [];
-
-        let filtered = data.filter(item => {
-            if (column === "all") {
-                return Object.values(item).some(val =>
-                    String(val || "").toLowerCase().includes(text)
-                );
-            } else {
-                return String(item[column] || "").toLowerCase().includes(text);
-            }
-        });
-
-        currentPage = 1;
-        renderTable(filtered);
-    }
+ 
 
     $searchBtn.on("click", filterData);
     $searchInput.on("input", filterData);
@@ -290,68 +200,6 @@ $(document).ready(function () {
     updateSortIcons(); // 🔥 add this
     loadData();
     });
-
-    // ================= SORT ICON FUNCTION 
-    function updateSortIcons() {
-
-    $(".sort-icon").html("");
-
-    let arrow = sortDirection === "asc" ? "↑" : "↓";
-
-    $(`#formTable th[data-col="${sortColumn}"] .sort-icon`).html(arrow);
-    }
-
-
-
-
-
-
-    // ================= PAGINATION
-    function renderPagination(total) {
-    $paginationContainer.empty();
-
-    let totalPages = Math.ceil(total / rowsPerPage);
-
-    // ===== PREVIOUS BUTTON
-    let prevBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 mr-2">Prev</button>`);
-
-    prevBtn.prop("disabled", currentPage === 1);
-
-    prevBtn.on("click", function () {
-        if (currentPage > 1) {
-            currentPage--;
-            loadData();
-        }
-    });
-
-    $paginationContainer.append(prevBtn);
-
-    // ===== PAGE NUMBERS
-    for (let i = 1; i <= totalPages; i++) {
-        let btn = $(`<button class="px-3 py-1 border rounded mx-1 ${i === currentPage ? 'bg-blue-500 text-white' : ''}">${i}</button>`);
-
-        btn.on("click", function () {
-            currentPage = i;
-            loadData();
-        });
-
-        $paginationContainer.append(btn);
-    }
-
-    // ===== NEXT BUTTON
-    let nextBtn = $(`<button class="px-3 py-1 border rounded bg-gray-200 ml-2">Next</button>`);
-
-    nextBtn.prop("disabled", currentPage === totalPages);
-
-    nextBtn.on("click", function () {
-        if (currentPage < totalPages) {
-            currentPage++;
-            loadData();
-        }
-    });
-
-    $paginationContainer.append(nextBtn);
-}
     // ================= HIGHLIGHT
    function highlight(text, columnName) {
 
