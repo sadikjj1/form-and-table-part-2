@@ -1,4 +1,3 @@
-$(document).ready(function () {
 $(document).ready(function () {    
 
 const $form = $("#mainForm");
@@ -405,4 +404,4 @@ $(this).find("span").text(isDark ? "Light Mode" : "Dark Mode");
 // INIT
 updateTheme();
 loadData();
-})});
+});
